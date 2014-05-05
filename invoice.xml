@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The COPYRIGHT file at the top level of this repository contains the full
+     copyright notices and license terms. -->
+<tryton>
+    <data>
+
+        <record model="ir.ui.view" id="invoice_configuration_view_form">
+            <field name="model">account.invoice.configuration</field>
+            <field name="type">form</field>
+            <field name="name">configuration_form</field>
+        </record>
+        <record model="ir.action.act_window"
+                id="act_invoice_configuration_form">
+            <field name="name">Invoice Configuration</field>
+            <field name="res_model">account.invoice.configuration</field>
+        </record>
+        <record model="ir.action.act_window.view"
+            id="act_invoice_configuration_view1">
+            <field name="sequence" eval="1"/>
+            <field name="view" ref="invoice_configuration_view_form"/>
+            <field name="act_window" ref="act_invoice_configuration_form"/>
+        </record>
+        <menuitem id="menu_invoice_configuration"
+            action="act_invoice_configuration_form"
+            parent="account.menu_account_configuration" sequence="10"
+            icon="tryton-list"/>
+
+        <record model="ir.ui.view" id="invoice_view_form">
+            <field name="model">account.invoice</field>
+            <field name="type">form</field>
+            <field name="inherit" ref="account_invoice.invoice_view_form"/>
+            <field name="name">invoice_form</field>
+        </record>
+        <record model="ir.ui.view" id="invoice_view_tree">
+            <field name="model">account.invoice</field>
+            <field name="type">tree</field>
+            <field name="inherit" ref="account_invoice.invoice_view_tree"/>
+            <field name="name">invoice_tree</field>
+        </record>
+
+    </data>
+</tryton>

@@ -1,0 +1,99 @@
+# 
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "field:account.invoice,allowed_contacts:"
+msgid "Allowed Contact"
+msgstr "Contactos permitidos"
+
+msgctxt "field:account.invoice,contact:"
+msgid "Contact"
+msgstr "Contacto"
+
+msgctxt "field:account.invoice.configuration,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:account.invoice.configuration,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:account.invoice.configuration,id:"
+msgid "ID"
+msgstr "Identificador"
+
+msgctxt "field:account.invoice.configuration,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:account.invoice.configuration,relation_types:"
+msgid "Contact types"
+msgstr "Tipos de contacto"
+
+msgctxt "field:account.invoice.configuration,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:account.invoice.configuration,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "field:party.relation.contact.configuration,create_date:"
+msgid "Create Date"
+msgstr "Fecha de creación"
+
+msgctxt "field:party.relation.contact.configuration,create_uid:"
+msgid "Create User"
+msgstr "Usuario de creación"
+
+msgctxt "field:party.relation.contact.configuration,id:"
+msgid "ID"
+msgstr "Identificador"
+
+msgctxt "field:party.relation.contact.configuration,rec_name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:party.relation.contact.configuration,relation:"
+msgid "Relation Type"
+msgstr "Tipos de relación"
+
+msgctxt "field:party.relation.contact.configuration,type:"
+msgid "Type"
+msgstr "Tipo"
+
+msgctxt "field:party.relation.contact.configuration,write_date:"
+msgid "Write Date"
+msgstr "Fecha modificación"
+
+msgctxt "field:party.relation.contact.configuration,write_uid:"
+msgid "Write User"
+msgstr "Usuario modificación"
+
+msgctxt "help:account.invoice,allowed_contacts:"
+msgid "Allowed relation types for the related contact."
+msgstr "Tipos de relación permitidos para el contacto relacionado"
+
+msgctxt "model:account.invoice.configuration,name:"
+msgid "Invoice Configuration"
+msgstr "Configuración de facturas"
+
+msgctxt "model:ir.action,name:act_invoice_configuration_form"
+msgid "Invoice Configuration"
+msgstr "Configuración de facturas"
+
+msgctxt "model:ir.ui.menu,name:menu_invoice_configuration"
+msgid "Invoice Configuration"
+msgstr "Configuración de facturas"
+
+msgctxt "model:party.relation.contact.configuration,name:"
+msgid "Contact Configuration"
+msgstr "Configuración de contactos"
+
+msgctxt "selection:account.invoice,conformity_state:"
+msgid ""
+msgstr ""
+
+msgctxt "view:account.invoice.configuration:"
+msgid "Invoice Configuration"
+msgstr "Configuración de facturas"
