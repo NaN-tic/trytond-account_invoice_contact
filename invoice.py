@@ -24,32 +24,23 @@ class ContactMixin:
     """
     _contact_config_name = None
 
-    allowed_contacts = fields.Function(fields.One2Many('party.party',
-            None, 'Allowed Contact',
+    allowed_contacts = fields.Function(fields.Many2Many('party.party',
+            None, None, 'Allowed Contact', on_change_with=['party'],
             help='Allowed relation types for the related contact.'),
-        'get_allowed_contacts')
+        'on_change_with_allowed_contacts')
     contact = fields.Many2One('party.party', 'Contact',
         domain=[
             ('id', 'in', Eval('allowed_contacts', [])),
             ],
         depends=['party', 'allowed_contacts'])
 
-    def get_allowed_contacts(self, name):
+    def on_change_with_allowed_contacts(self, name=None):
         pool = Pool()
-        Config = pool.get(self._contact_config_name)
-
-        res = []
+        Employee = pool.get('company.employee')
+        res = [e.party.id for e in Employee.search([])]
         if not self.party:
             return res
-
-        config = Config(1)
-        types = [r.id for r in config.relation_types]
-        relations = self.party.relations
-        if not relations:
-            return res
-        for relation in relations:
-            if relation.type.id in types:
-                res.append(relation.to.id)
+        res.extend(r.to.id for r in self.party.relations)
         return res
 
     def on_change_party(self):
