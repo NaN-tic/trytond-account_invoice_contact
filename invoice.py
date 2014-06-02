@@ -25,7 +25,7 @@ class ContactMixin:
     _contact_config_name = None
 
     allowed_contacts = fields.Function(fields.Many2Many('party.party',
-            None, None, 'Allowed Contact', on_change_with=['party'],
+            None, None, 'Allowed Contact',
             help='Allowed relation types for the related contact.'),
         'on_change_with_allowed_contacts')
     contact = fields.Many2One('party.party', 'Contact',
@@ -41,6 +41,7 @@ class ContactMixin:
             cls.contact.states = cls.party.states
             cls.contact.depends = cls.contact.depends + cls.party.depends
 
+    @fields.depends('party')
     def on_change_with_allowed_contacts(self, name=None):
         pool = Pool()
         Config = pool.get(self._contact_config_name)
