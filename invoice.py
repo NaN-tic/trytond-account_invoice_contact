@@ -34,25 +34,29 @@ class ContactMixin:
             ],
         depends=['party', 'allowed_contacts'])
 
+    @classmethod
+    def __setup__(cls):
+        super(ContactMixin, cls).__setup__()
+        if cls.party.states:
+            cls.contact.states = cls.party.states
+            cls.contact.depends = cls.contact.depends + cls.party.depends
+
     def on_change_with_allowed_contacts(self, name=None):
         pool = Pool()
-        Employee = pool.get('company.employee')
-        res = [e.party.id for e in Employee.search([])]
+        Config = pool.get(self._contact_config_name)
+
+        res = []
         if not self.party:
             return res
-        res.extend(r.to.id for r in self.party.relations)
-        return res
 
-    def on_change_party(self):
-        res = super(ContactMixin, self).on_change_party()
-        if self.party:
-            allowed_contacts = self.get_allowed_contacts(None)
-            res['allowed_contacts'] = allowed_contacts
-            if len(allowed_contacts) == 1:
-                res['contact'] = allowed_contacts[0]
-        else:
-            res['contact'] = None
-            res['allowed_contacts'] = None
+        config = Config(1)
+        types = [r.id for r in config.relation_types]
+        relations = self.party.relations
+        if not relations:
+            return res
+        for relation in relations:
+            if relation.type.id in types:
+                res.append(relation.to.id)
         return res
 
 
