@@ -39,6 +39,8 @@ class ContactMixin:
         super(ContactMixin, cls).__setup__()
         if cls.party.states:
             cls.contact.states = cls.party.states
+            if 'required' in cls.contact.states:
+                del cls.contact.states['required']
             cls.contact.depends = cls.contact.depends + cls.party.depends
 
     @fields.depends('party')
