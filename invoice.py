@@ -23,6 +23,7 @@ class ContactMixin:
     Many2Many field to `party.relation.type` model.
     """
     _contact_config_name = None
+    _contact_config_template_field = 'invoice_address'
 
     allowed_contacts = fields.Function(fields.Many2Many('party.party',
             None, None, 'Allowed Contact',
@@ -37,11 +38,13 @@ class ContactMixin:
     @classmethod
     def __setup__(cls):
         super(ContactMixin, cls).__setup__()
-        if cls.party.states:
-            cls.contact.states = cls.party.states
+        template_field = getattr(cls, cls._contact_config_template_field)
+        if template_field.states:
+            cls.contact.states = template_field.states.copy()
             if 'required' in cls.contact.states:
                 del cls.contact.states['required']
-            cls.contact.depends = cls.contact.depends + cls.party.depends
+            cls.contact.depends = (cls.contact.depends
+                + template_field.depends)
 
     @fields.depends('party')
     def on_change_with_allowed_contacts(self, name=None):
