@@ -1,4 +1,4 @@
-# 
+#
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
@@ -12,15 +12,15 @@ msgstr "Contacte"
 
 msgctxt "field:account.invoice.configuration,create_date:"
 msgid "Create Date"
-msgstr "Data de creació"
+msgstr "Data creació"
 
 msgctxt "field:account.invoice.configuration,create_uid:"
 msgid "Create User"
-msgstr "Usuari de creació"
+msgstr "Usuari creació"
 
 msgctxt "field:account.invoice.configuration,id:"
 msgid "ID"
-msgstr "Identificador"
+msgstr "ID"
 
 msgctxt "field:account.invoice.configuration,rec_name:"
 msgid "Name"
@@ -38,35 +38,35 @@ msgctxt "field:account.invoice.configuration,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
 
-msgctxt "field:party.relation.contact.configuration,create_date:"
+msgctxt "field:account.invoice.configuration-party.relation.type,config:"
+msgid "Config"
+msgstr "Configuració"
+
+msgctxt "field:account.invoice.configuration-party.relation.type,create_date:"
 msgid "Create Date"
-msgstr "Data de creació"
+msgstr "Data creació"
 
-msgctxt "field:party.relation.contact.configuration,create_uid:"
+msgctxt "field:account.invoice.configuration-party.relation.type,create_uid:"
 msgid "Create User"
-msgstr "Usuari de creació"
+msgstr "Usuari creació"
 
-msgctxt "field:party.relation.contact.configuration,id:"
+msgctxt "field:account.invoice.configuration-party.relation.type,id:"
 msgid "ID"
-msgstr "Identificador"
+msgstr "ID"
 
-msgctxt "field:party.relation.contact.configuration,rec_name:"
+msgctxt "field:account.invoice.configuration-party.relation.type,rec_name:"
 msgid "Name"
 msgstr "Nom"
 
-msgctxt "field:party.relation.contact.configuration,relation:"
+msgctxt "field:account.invoice.configuration-party.relation.type,relation:"
 msgid "Relation Type"
 msgstr "Tipus de relació"
 
-msgctxt "field:party.relation.contact.configuration,type:"
-msgid "Type"
-msgstr "Tipus"
-
-msgctxt "field:party.relation.contact.configuration,write_date:"
+msgctxt "field:account.invoice.configuration-party.relation.type,write_date:"
 msgid "Write Date"
-msgstr "Data modificació"
+msgstr "Usuari creació"
 
-msgctxt "field:party.relation.contact.configuration,write_uid:"
+msgctxt "field:account.invoice.configuration-party.relation.type,write_uid:"
 msgid "Write User"
 msgstr "Usuari modificació"
 
@@ -78,6 +78,10 @@ msgctxt "model:account.invoice.configuration,name:"
 msgid "Invoice Configuration"
 msgstr "Configuració de factures"
 
+msgctxt "model:account.invoice.configuration-party.relation.type,name:"
+msgid "Invoice Configuration - Party relation type"
+msgstr "Configuració de factures - Tipus relació tercer"
+
 msgctxt "model:ir.action,name:act_invoice_configuration_form"
 msgid "Invoice Configuration"
 msgstr "Configuració de factures"
@@ -85,14 +89,6 @@ msgstr "Configuració de factures"
 msgctxt "model:ir.ui.menu,name:menu_invoice_configuration"
 msgid "Invoice Configuration"
 msgstr "Configuració de factures"
-
-msgctxt "model:party.relation.contact.configuration,name:"
-msgid "Contact Configuration"
-msgstr "Configuració contactes"
-
-msgctxt "selection:account.invoice,conformity_state:"
-msgid ""
-msgstr ""
 
 msgctxt "view:account.invoice.configuration:"
 msgid "Invoice Configuration"
