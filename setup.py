@@ -14,6 +14,7 @@ MODULE2PREFIX = {}
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
 
+
 config = ConfigParser.ConfigParser()
 config.readfp(open('tryton.cfg'))
 info = dict(config.items('tryton'))
@@ -28,31 +29,32 @@ requires = []
 for dep in info.get('depends', []):
     if not re.match(r'(ir|res|webdav)(\W|$)', dep):
         prefix = MODULE2PREFIX.get(dep, 'trytond')
-        requires.append('%s_%s >= %s.%s, < %s.%s' %
-                (prefix, dep, major_version, minor_version,
-                major_version, minor_version + 1))
-requires.append('trytond >= %s.%s, < %s.%s' %
-        (major_version, minor_version, major_version, minor_version + 1))
+        requires.append('%s_%s >= %s.%s, < %s.%s' % (
+            prefix, dep,
+            major_version, minor_version, major_version, minor_version + 1))
+requires.append('trytond >= %s.%s, < %s.%s' % (
+    major_version, minor_version, major_version, minor_version + 1))
 
-tests_require = ['proteus >= %s.%s, < %s.%s' %
-    (major_version, minor_version, major_version, minor_version + 1)]
+tests_require = ['proteus >= %s.%s, < %s.%s' % (
+    major_version, minor_version, major_version, minor_version + 1)]
 
-setup(name='%s_%s' % (PREFIX, MODULE),
+setup(
+    name='%s_%s' % (PREFIX, MODULE),
     version=info.get('version', '0.0.1'),
     description='',
     long_description=read('README'),
-    author='NaNÂ·tic',
+    author='NaN·tic',
     url='http://www.nan-tic.com/',
     download_url="https://bitbucket.org/nantic/trytond-%s" % MODULE,
     package_dir={'trytond.modules.%s' % MODULE: '.'},
     packages=[
         'trytond.modules.%s' % MODULE,
         'trytond.modules.%s.tests' % MODULE,
-        ],
+    ],
     package_data={
-        'trytond.modules.%s' % MODULE: (info.get('xml', [])
-            + ['tryton.cfg', 'locale/*.po', 'tests/*.rst']),
-        },
+        'trytond.modules.%s' % MODULE: (info.get('xml', []) + [
+            'tryton.cfg', 'locale/*.po', 'view/*.xml', 'tests/*.rst']),
+    },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
         'Environment :: Plugins',
@@ -85,4 +87,4 @@ setup(name='%s_%s' % (PREFIX, MODULE),
     test_suite='tests',
     test_loader='trytond.test_loader:Loader',
     tests_require=tests_require,
-    )
+)
