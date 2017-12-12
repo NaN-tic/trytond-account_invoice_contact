@@ -1,15 +1,14 @@
 # The COPYRIGHT file at the top level of this repository contains
 # the full copyright notices and license terms.
-from trytond.model import fields, ModelSQL, ModelView, ModelSingleton
-from trytond.pool import Pool, PoolMeta
+from trytond.model import fields, Model, ModelSQL, ModelView, ModelSingleton
+from trytond.pool import Pool
 from trytond.pyson import Eval
 
 __all__ = ['ContactMixin', 'Configuration', 'ConfigurationRelationType',
     'Invoice']
-__metaclass__ = PoolMeta
 
 
-class ContactMixin:
+class ContactMixin(Model):
     """
     Mixin to relate models with contacts.
 
@@ -43,8 +42,7 @@ class ContactMixin:
             cls.contact.states = template_field.states.copy()
             if 'required' in cls.contact.states:
                 del cls.contact.states['required']
-            cls.contact.depends = (cls.contact.depends
-                + template_field.depends)
+            cls.contact.depends += template_field.depends
 
     @fields.depends('party')
     def on_change_with_allowed_contacts(self, name=None):
@@ -90,7 +88,6 @@ class Invoice(ContactMixin):
     _contact_config_name = 'account.invoice.configuration'
 
     def _credit(self):
-        res = super(Invoice, self)._credit()
-        if self.contact:
-            res['contact'] = self.contact.id
-        return res
+        credit = super(Invoice, self)._credit()
+        credit.contact = self.contact
+        return credit
