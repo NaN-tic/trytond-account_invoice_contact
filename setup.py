@@ -41,7 +41,7 @@ setup(name='%s_%s' % (PREFIX, MODULE),
     version=info.get('version', '0.0.1'),
     description='',
     long_description=read('README'),
-    author='NaN·tic',
+    author='NaNï¿½tic',
     url='http://www.nan-tic.com/',
     download_url="https://bitbucket.org/nantic/trytond-%s" % MODULE,
     package_dir={'trytond.modules.%s' % MODULE: '.'},
@@ -51,7 +51,8 @@ setup(name='%s_%s' % (PREFIX, MODULE),
         ],
     package_data={
         'trytond.modules.%s' % MODULE: (info.get('xml', [])
-            + ['tryton.cfg', 'locale/*.po', 'tests/*.rst', 'view/*.xml']),
+            + ['tryton.cfg', 'view/*.xml', 'view/*/*.xml', 'locale/*.po',
+             '*.odt', 'icons/*.svg', 'tests/*.rst', '*.jrxml']),
         },
     classifiers=[
         'Development Status :: 5 - Production/Stable',
