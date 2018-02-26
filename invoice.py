@@ -92,5 +92,5 @@ class Invoice(ContactMixin):
     def _credit(self):
         res = super(Invoice, self)._credit()
         if self.contact:
-            res['contact'] = self.contact.id
+            res.contact = self.contact.id
         return res
