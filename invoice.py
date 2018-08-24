@@ -1,7 +1,7 @@
 # The COPYRIGHT file at the top level of this repository contains
 # the full copyright notices and license terms.
 from trytond.model import fields, Model, ModelSQL, ModelView, ModelSingleton
-from trytond.pool import Pool
+from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
 
 __all__ = ['ContactMixin', 'Configuration', 'ConfigurationRelationType',
@@ -83,7 +83,7 @@ class Configuration(ModelSingleton, ModelSQL, ModelView):
         'relation', 'Contact types')
 
 
-class Invoice(ContactMixin):
+class Invoice(ContactMixin, metaclass=PoolMeta):
     __name__ = 'account.invoice'
     _contact_config_name = 'account.invoice.configuration'
 
