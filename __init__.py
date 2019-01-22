@@ -2,6 +2,7 @@
 # copyright notices and license terms.
 from trytond.pool import Pool
 from . import invoice
+from . import party
 
 
 def register():
@@ -10,3 +11,6 @@ def register():
         invoice.ConfigurationRelationType,
         invoice.Invoice,
         module='account_invoice_contact', type_='model')
+    Pool.register(
+        party.PartyReplace,
+        module='account_invoice_contact', type_='wizard')
