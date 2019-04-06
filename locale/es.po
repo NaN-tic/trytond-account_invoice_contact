@@ -23,7 +23,7 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:account.invoice.configuration,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr "Nombre"
 
 msgctxt "field:account.invoice.configuration,relation_types:"
@@ -36,7 +36,7 @@ msgstr "Fecha modificación"
 
 msgctxt "field:account.invoice.configuration,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "field:account.invoice.configuration-party.relation.type,config:"
 msgid "Config"
@@ -55,7 +55,7 @@ msgid "ID"
 msgstr "ID"
 
 msgctxt "field:account.invoice.configuration-party.relation.type,rec_name:"
-msgid "Name"
+msgid "Record Name"
 msgstr "Nombre"
 
 msgctxt "field:account.invoice.configuration-party.relation.type,relation:"
@@ -68,7 +68,7 @@ msgstr "Fecha modificación"
 
 msgctxt "field:account.invoice.configuration-party.relation.type,write_uid:"
 msgid "Write User"
-msgstr "Usuario modificación"
+msgstr "Usuario de modificación"
 
 msgctxt "help:account.invoice,allowed_contacts:"
 msgid "Allowed relation types for the related contact."
