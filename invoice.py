@@ -87,7 +87,7 @@ class Invoice(ContactMixin, metaclass=PoolMeta):
     __name__ = 'account.invoice'
     _contact_config_name = 'account.invoice.configuration'
 
-    def _credit(self):
-        credit = super(Invoice, self)._credit()
+    def _credit(self, **values):
+        credit = super(Invoice, self)._credit(**values)
         credit.contact = self.contact
         return credit
