@@ -8,7 +8,7 @@ __all__ = ['ContactMixin', 'Configuration', 'ConfigurationRelationType',
     'Invoice']
 
 
-class ContactMixin(Model):
+class ContactMixin(object):
     """
     Mixin to relate models with contacts.
 
@@ -21,6 +21,7 @@ class ContactMixin(Model):
     `_contact_config_name` property and it expects to have a relation_types
     Many2Many field to `party.relation.type` model.
     """
+    __slots__ = ()
     _contact_config_name = None
     _contact_config_template_field = 'invoice_address'
 
