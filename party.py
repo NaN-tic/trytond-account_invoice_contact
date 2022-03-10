@@ -11,5 +11,5 @@ class PartyReplace(metaclass=PoolMeta):
     @classmethod
     def fields_to_replace(cls):
         return super(PartyReplace, cls).fields_to_replace() + [
-            ('account.invoice', 'contact'),
+            ('account.invoice', 'invoice_contact'),
             ]

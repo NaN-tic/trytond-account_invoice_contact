@@ -3,12 +3,13 @@
 from trytond.model import fields, Model, ModelSQL, ModelView, ModelSingleton
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
+from trytond.transaction import Transaction
 
 __all__ = ['ContactMixin', 'Configuration', 'ConfigurationRelationType',
     'Invoice']
 
 
-class ContactMixin(object):
+class ContactMixin(Model):
     """
     Mixin to relate models with contacts.
 
@@ -21,32 +22,33 @@ class ContactMixin(object):
     `_contact_config_name` property and it expects to have a relation_types
     Many2Many field to `party.relation.type` model.
     """
-    __slots__ = ()
     _contact_config_name = None
     _contact_config_template_field = 'invoice_address'
 
-    allowed_contacts = fields.Function(fields.Many2Many('party.party',
-            None, None, 'Allowed Contact',
+    allowed_invoice_contacts = fields.Function(fields.Many2Many('party.party',
+            None, None, "Allowed Contact",
             help='Allowed relation types for the related contact.'),
-        'on_change_with_allowed_contacts')
-    contact = fields.Many2One('party.party', 'Contact',
+        'on_change_with_allowed_invoice_contacts')
+    invoice_contact = fields.Many2One('party.party', "Invoice Contact",
         domain=[
-            ('id', 'in', Eval('allowed_contacts', [])),
+            ('id', 'in', Eval('allowed_invoice_contacts', [])),
             ],
-        depends=['party', 'allowed_contacts'])
+        depends=['party', 'allowed_invoice_contacts'])
 
     @classmethod
     def __setup__(cls):
         super(ContactMixin, cls).__setup__()
         template_field = getattr(cls, cls._contact_config_template_field)
         if template_field.states:
-            cls.contact.states = template_field.states.copy()
-            if 'required' in cls.contact.states:
-                del cls.contact.states['required']
-            cls.contact.depends += template_field.depends
+            cls.invoice_contact.states = template_field.states.copy()
+            if 'required' in cls.invoice_contact.states:
+                del cls.invoice_contact.states['required']
+            cls.invoice_contact.depends += template_field.depends
+
+    # Migration from 5.6: see SQL upgrades to rename contact into invoice_contact
 
     @fields.depends('party')
-    def on_change_with_allowed_contacts(self, name=None):
+    def on_change_with_allowed_invoice_contacts(self, name=None):
         pool = Pool()
         Config = pool.get(self._contact_config_name)
 
@@ -90,5 +92,5 @@ class Invoice(ContactMixin, metaclass=PoolMeta):
 
     def _credit(self, **values):
         credit = super(Invoice, self)._credit(**values)
-        credit.contact = self.contact
+        credit.invoice_contact = self.invoice_contact
         return credit
