@@ -146,7 +146,7 @@ Create invoice::
     >>> invoice = Invoice()
     >>> invoice.party = party2
     >>> invoice.payment_term = payment_term
-    >>> invoice.contact = party
+    >>> invoice.invoice_contact = party
     >>> line = InvoiceLine()
     >>> invoice.lines.append(line)
     >>> line.product = product
@@ -176,5 +176,5 @@ Try replace active party::
 Check fields have been replaced::
 
     >>> invoice.reload()
-    >>> invoice.contact == party2
+    >>> invoice.invoice_contact == party2
     True

@@ -6,9 +6,9 @@ msgctxt "field:account.invoice,allowed_contacts:"
 msgid "Allowed Contact"
 msgstr "Contactos permitidos"
 
-msgctxt "field:account.invoice,contact:"
-msgid "Contact"
-msgstr "Contacto"
+msgctxt "field:account.invoice,invoice_contact:"
+msgid "Invoice Contact"
+msgstr "Contacto factura"
 
 msgctxt "field:account.invoice.configuration,create_date:"
 msgid "Create Date"
