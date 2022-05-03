@@ -43,7 +43,7 @@ class ContactMixin(Model):
             cls.invoice_contact.states = template_field.states.copy()
             if 'required' in cls.invoice_contact.states:
                 del cls.invoice_contact.states['required']
-            cls.invoice_contact.depends += template_field.depends
+            cls.invoice_contact.depends |= template_field.depends
 
     # Migration from 5.6: see SQL upgrades to rename contact into invoice_contact
 
