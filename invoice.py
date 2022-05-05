@@ -27,13 +27,20 @@ class ContactMixin(Model):
 
     allowed_invoice_contacts = fields.Function(fields.Many2Many('party.party',
             None, None, "Allowed Contact",
-            help='Allowed relation types for the related contact.'),
+            help='Allowed relation types for the related contact.',
+            context={
+                'company': Eval('company'),
+            },
+            depends=['company']),
         'on_change_with_allowed_invoice_contacts')
     invoice_contact = fields.Many2One('party.party', "Invoice Contact",
         domain=[
             ('id', 'in', Eval('allowed_invoice_contacts', [])),
             ],
-        depends=['party', 'allowed_invoice_contacts'])
+        context={
+                'company': Eval('company'),
+            },
+        depends=['party', 'allowed_invoice_contacts', 'company'])
 
     @classmethod
     def __setup__(cls):
