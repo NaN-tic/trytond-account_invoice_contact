@@ -2,7 +2,7 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=utf-8\n"
 
-msgctxt "field:account.invoice,allowed_contacts:"
+msgctxt "field:account.invoice,allowed_invoice_contacts:"
 msgid "Allowed Contact"
 msgstr "Contactes permesos"
 
@@ -10,69 +10,21 @@ msgctxt "field:account.invoice,invoice_contact:"
 msgid "Invoice Contact"
 msgstr "Contacte factura"
 
-msgctxt "field:account.invoice.configuration,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:account.invoice.configuration,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
-msgctxt "field:account.invoice.configuration,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.invoice.configuration,rec_name:"
-msgid "Record Name"
-msgstr "Nom"
-
 msgctxt "field:account.invoice.configuration,relation_types:"
 msgid "Contact types"
 msgstr "Tipus de contactes"
-
-msgctxt "field:account.invoice.configuration,write_date:"
-msgid "Write Date"
-msgstr "Data de modificació"
-
-msgctxt "field:account.invoice.configuration,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
 
 msgctxt "field:account.invoice.configuration-party.relation.type,config:"
 msgid "Config"
 msgstr "Configuració"
 
-msgctxt "field:account.invoice.configuration-party.relation.type,create_date:"
-msgid "Create Date"
-msgstr "Data de creació"
-
-msgctxt "field:account.invoice.configuration-party.relation.type,create_uid:"
-msgid "Create User"
-msgstr "Usuari de creació"
-
-msgctxt "field:account.invoice.configuration-party.relation.type,id:"
-msgid "ID"
-msgstr "ID"
-
-msgctxt "field:account.invoice.configuration-party.relation.type,rec_name:"
-msgid "Record Name"
-msgstr "Nom"
-
 msgctxt "field:account.invoice.configuration-party.relation.type,relation:"
 msgid "Relation Type"
 msgstr "Tipus de relació"
 
-msgctxt "field:account.invoice.configuration-party.relation.type,write_date:"
-msgid "Write Date"
-msgstr "Usuari de creació"
-
-msgctxt "field:account.invoice.configuration-party.relation.type,write_uid:"
-msgid "Write User"
-msgstr "Usuari de modificació"
-
-msgctxt "help:account.invoice,allowed_contacts:"
+msgctxt "help:account.invoice,allowed_invoice_contacts:"
 msgid "Allowed relation types for the related contact."
-msgstr "Tipus de relació permesos pel contacte relacionat"
+msgstr "Tipus de relació permeses pel contacte relacionat."
 
 msgctxt "model:account.invoice.configuration,name:"
 msgid "Invoice Configuration"
