@@ -27,20 +27,13 @@ class ContactMixin(Model):
 
     allowed_invoice_contacts = fields.Function(fields.Many2Many('party.party',
             None, None, "Allowed Contact",
-            help='Allowed relation types for the related contact.',
-            context={
-                'company': Eval('company'),
-            },
-            depends=['company']),
+            help='Allowed relation types for the related contact.'),
         'on_change_with_allowed_invoice_contacts')
     invoice_contact = fields.Many2One('party.party', "Invoice Contact",
         domain=[
             ('id', 'in', Eval('allowed_invoice_contacts', [])),
             ],
-        context={
-                'company': Eval('company'),
-            },
-        depends=['party', 'allowed_invoice_contacts', 'company'])
+        depends=['party', 'allowed_invoice_contacts'])
 
     @classmethod
     def __setup__(cls):
@@ -96,6 +89,14 @@ class Configuration(ModelSingleton, ModelSQL, ModelView):
 class Invoice(ContactMixin, metaclass=PoolMeta):
     __name__ = 'account.invoice'
     _contact_config_name = 'account.invoice.configuration'
+
+    @classmethod
+    def __setup__(cls):
+        super().__setup__()
+        cls.allowed_invoice_contacts.context = {'company': Eval('company')}
+        cls.allowed_invoice_contacts.depends.append('company')
+        cls.invoice_contact.context = {'company': Eval('company')}
+        cls.invoice_contact.depends.append('company')
 
     def _credit(self, **values):
         credit = super(Invoice, self)._credit(**values)
