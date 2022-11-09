@@ -79,9 +79,9 @@ class ConfigurationRelationType(ModelSQL):
     __name__ = 'account.invoice.configuration-party.relation.type'
 
     relation = fields.Many2One('party.relation.type', 'Relation Type',
-        required=True, select=True)
+        required=True)
     config = fields.Many2One('account.invoice.configuration', 'Config',
-        required=True, select=True)
+        required=True)
 
 
 class Configuration(ModelSingleton, ModelSQL, ModelView):
