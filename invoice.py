@@ -3,13 +3,13 @@
 from trytond.model import fields, Model, ModelSQL, ModelView, ModelSingleton
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
-from trytond.transaction import Transaction
+from trytond.modules.company.model import CompanyValueMixin
 
 __all__ = ['ContactMixin', 'Configuration', 'ConfigurationRelationType',
     'Invoice']
 
 
-class ContactMixin(Model):
+class ContactMixin(Model, CompanyValueMixin):
     """
     Mixin to relate models with contacts.
 
