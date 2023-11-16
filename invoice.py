@@ -29,7 +29,7 @@ class ContactMixin(Model, CompanyValueMixin):
             None, None, "Allowed Contact",
             help='Allowed relation types for the related contact.',
             context={
-                'company': Eval('company'),
+                'company': Eval('company', -1),
             },
             depends=['company']),
         'on_change_with_allowed_invoice_contacts')
@@ -38,7 +38,7 @@ class ContactMixin(Model, CompanyValueMixin):
             ('id', 'in', Eval('allowed_invoice_contacts', [])),
             ],
         context={
-                'company': Eval('company'),
+                'company': Eval('company', -1),
             },
         depends=['party', 'allowed_invoice_contacts', 'company'])
 
@@ -100,9 +100,9 @@ class Invoice(ContactMixin, metaclass=PoolMeta):
     @classmethod
     def __setup__(cls):
         super().__setup__()
-        cls.allowed_invoice_contacts.context = {'company': Eval('company')}
+        cls.allowed_invoice_contacts.context = {'company': Eval('company', -1)}
         cls.allowed_invoice_contacts.depends.add('company')
-        cls.invoice_contact.context = {'company': Eval('company')}
+        cls.invoice_contact.context = {'company': Eval('company', -1)}
         cls.invoice_contact.depends.add('company')
 
     def _credit(self, **values):
