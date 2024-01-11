@@ -40,7 +40,7 @@ class ContactMixin(Model, CompanyValueMixin):
         context={
                 'company': Eval('company', -1),
             },
-        depends=['party', 'allowed_invoice_contacts', 'company'])
+        depends=['company'])
 
     @classmethod
     def __setup__(cls):
