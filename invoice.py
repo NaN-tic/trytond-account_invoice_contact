@@ -9,7 +9,7 @@ __all__ = ['ContactMixin', 'Configuration', 'ConfigurationRelationType',
     'Invoice']
 
 
-class ContactMixin(Model, CompanyValueMixin):
+class ContactMixin(CompanyValueMixin):
     """
     Mixin to relate models with contacts.
 
